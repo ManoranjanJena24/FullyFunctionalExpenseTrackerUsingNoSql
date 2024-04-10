@@ -1,0 +1,32 @@
+/* report.css */
+
+/* Style for the table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #7cca5f;
+    /* Set table background color */
+}
+
+/* Center the table in the middle of the screen with padding */
+.container {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    /* Adjust as needed */
+}
+
+/* Style for the View Report button */
+.btn-primary {
+    background-color: #7cca5f;
+    /* Set button background color */
+    border-color: #7cca5f;
+    /* Set button border color */
+}
+
+.btn-primary:hover {
+    background-color: #6ab14e;
+    /* Set button background color on hover */
+    border-color: #6ab14e;
+    /* Set button border color on hover */
+}

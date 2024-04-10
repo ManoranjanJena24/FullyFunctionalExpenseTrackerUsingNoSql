@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="./expense.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body style="margin: 0">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">Expense Tracker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <!-- You can add additional navigation links here if needed -->
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <button class="btn btn-outline-primary my-2 my-sm-0" id="razoorpay-button" type="button"
+            onclick="razoorpayfunction(event)">Buy Premium</button>
+          <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+          <p id="premium-text" class="navbar-brand">You Are A Premium User</p>
+          <button class="btn btn-outline-primary my-2 my-sm-0" id="leaderBoard-button" type="button"
+            onclick="showLeaderBoard()">Show LeaderBoard</button>
+            <!-- changes -->
+            <button class="btn btn-outline-primary my-2 my-sm-0" id="report-button" type="button" onclick="showReport()">Generate
+              Expense Report</button>
+            <!-- changes -->
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-6">
+    <form onsubmit="handleFormSubmit(event)" class="mb-4">
+      <div class="form-group">
+        <label for="amount">Choose Expense Amount</label>
+        <input type="number" name="amount" id="amount" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="description">Choose Description</label>
+        <input type="text" name="description" id="description" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="category">Choose a Category:</label>
+        <select name="category" id="category" class="form-control">
+          <option value="fuel">Fuel</option>
+          <option value="food">Food</option>
+          <option value="electricity">Electricity</option>
+          <option value="movie">Movie</option>
+          <option value="rent">Rent</option>
+          <option value="water">Water</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Expense</button>
+    </form>
+
+    <form id="salary-form" onsubmit="handleSalarySubmit(event)" class="mb-4">
+      <div class="form-group">
+        <label for="salary">Enter salary received</label>
+        <input type="number" name="salary" id="salary" class="form-control" />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <ul id="expensesList" class="list-group"></ul>
+    <div class="select-wrapper">
+      <span>Rows per page:</span>
+      <select class="select">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+      </select>
+    </div>
+    <div id="pagination" class="mt-3"></div>
+
+    <ul id="LeaderBoard" class="list-group"></ul>
+  </div>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+  <script src="./expense.js"></script>
+</body>
+
+</html>
