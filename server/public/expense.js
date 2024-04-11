@@ -247,6 +247,11 @@ function handleSalarySubmit(event) {
     addSalary(salary)
     event.target.reset();
 }
+function logOutButton() {
+    localStorage.clear()
+    alert("Logged Out Successfully")
+    window.location.href = 'index.html'
+}
 
 function addSalary(data) {
     console.log(data)
