@@ -52,6 +52,8 @@ document.getElementById('signUpForm').addEventListener('submit', function (event
 
 function postSignUpData(data) {
     axios.post(`${url}/user/signup`, data).then(() => {
+        alert("Signed Up Successfully!!")
+        window.location.href = 'index.html';
 
     }).catch((err) => {
         console.log(err)
