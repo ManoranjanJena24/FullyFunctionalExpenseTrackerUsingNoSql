@@ -235,21 +235,25 @@ exports.postAddExpense = async (req, res, next) => {
 
     try {
         const createdExpense = new Expense({
-            amount: amount,
+            amount: Number(amount),
             description: description,
             category: category,
             user: userId,
         });
 
         await createdExpense.save();
+        await User.findByIdAndUpdate(userId, {
+            $push: { expenses: createdExpense._id }
+        });
 
         const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
+        console.log(typeof(amount))
 
-        user.totalExpense += amount;
-        user.totalSavings -= amount;
+        user.totalExpense += Number(amount);
+        user.totalSavings -= Number(amount);
 
         await user.save();
 
@@ -335,7 +339,8 @@ exports.postDeleteExpense = async (req, res, next) => {
 
         await Expense.findByIdAndDelete(expenseId);
         user.totalExpense -= expenseAmount;
-
+        user.totalSavings += expenseAmount;
+        user.expenses = user.expenses.filter(expenseId => expenseId.toString() !== expense._id.toString());
         await user.save();
         res.send('Deleted');
     } catch (error) {

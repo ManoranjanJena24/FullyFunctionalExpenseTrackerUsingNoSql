@@ -220,7 +220,7 @@ function showLeaderBoard() {
     axios.get(`${url}/purchase/leaderboard`).then((data) => { 
 
         console.log(data)
-        renderLeaderBoard(data.data)
+        renderLeaderBoard(data.data.data)
     })
 }
 
@@ -236,7 +236,7 @@ function renderLeaderBoard(expenses) {
         let newExpense = JSON.stringify(expense)
         const li = document.createElement('li');
         li.className = 'list-group-item';
-        li.innerHTML = ` ${expense.name} - ${expense.totalexpense}  `;
+        li.innerHTML = ` ${expense.name} - ${expense.totalExpense}  `;
         expensesList.appendChild(li);
     });
 }

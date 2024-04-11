@@ -178,20 +178,36 @@ exports.updateTransactionStatus = async (req, res, next) => {
     }
 };
 
+// exports.postDownloadLeaderBoard = async (req, res, next) => {
+//     try {
+//         const users = await User.find().sort({ totalExpense: -1 });
+//         let expenses=[]
+//         users.forEach((user) => {
+//             console.log(user.expenses)
+//         })
+
+//         res.status(200).json({ success: true,users });
+//     } catch (error) {
+//         console.error('Error downloading leaderboard:', error);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// };
+
 exports.postDownloadLeaderBoard = async (req, res, next) => {
     try {
-        const users = await User.find().sort({ totalExpense: -1 });
+        // Find all users and sort them by totalExpense in descending order
+        const users = await User.find()
+            .sort({ totalExpense: -1 })
+            .select('name totalExpense'); // Only select the fields we need: name and totalExpense
 
-        // let html = '<table>';
-        // html += '<tr><th>NAME</th><th>EXPENSE</th></tr>';
+        // Map the list of users to include only name and totalExpense
+        const leaderBoardData = users.map(user => ({
+            name: user.name,
+            totalExpense: user.totalExpense
+        }));
 
-        // users.forEach(user => {
-        //     html += `<tr><td>${user.name}</td><td>${user.totalExpense}</td></tr>`;
-        // });
-
-        // html += '</table>';
-
-        res.status(200).json({ success: true,users });
+        // Send the leaderboard data as a JSON response
+        res.status(200).json({ success: true, data: leaderBoardData });
     } catch (error) {
         console.error('Error downloading leaderboard:', error);
         res.status(500).json({ error: 'Internal Server Error' });
