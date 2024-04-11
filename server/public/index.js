@@ -99,7 +99,7 @@ function userLogin(data) {
         console.log(res.data.token)
         console.log(res)
         localStorage.setItem('token', res.data.token)
-        localStorage.setItem('isPremium', res.data.isPremium)
+        localStorage.setItem('isPremium', res.data.user.isPremiumUser)
         // window.location.href = '/client/expense.html'; 
         window.location.href = 'expense.html';
 

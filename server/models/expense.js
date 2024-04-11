@@ -17,6 +17,8 @@ const expenseSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }
+}, {
+    timestamps: true // Enable timestamps to automatically add createdAt and updatedAt fields
 });
 
 module.exports = mongoose.model('Expense', expenseSchema)

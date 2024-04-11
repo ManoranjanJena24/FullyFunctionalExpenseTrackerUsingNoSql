@@ -20,7 +20,7 @@ function showReport() {
     Promise.all([expensesPromise, salariesPromise])
         .then(([expensesResponse, salariesResponse]) => {
             const expensesData = expensesResponse.data;
-            const salariesData = salariesResponse.data;
+            const salariesData = salariesResponse.data.salaries;
 
             console.log('All expenses: ', expensesData);
             console.log('All salaries: ', salariesData);
