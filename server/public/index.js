@@ -19,8 +19,8 @@ sign_in_btn2.addEventListener("click", () => {
 
 
 
-// let url = "http://localhost:3000"
-let url = "http://54.80.220.110:3000"
+let url = "http://localhost:3000"
+// let url = "http://54.80.220.110:3000"
 
 // function handleSignUpForm(event) {
 //     event.preventDefault();

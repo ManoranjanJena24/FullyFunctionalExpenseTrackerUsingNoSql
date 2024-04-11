@@ -9,7 +9,7 @@ const userAuthentication = require('../middleware/auth')
 
 
 
-router.post('/signup', userController.postCreateUser);
+router.post('/signup', userController.postRegisterUser);
 
 router.post('/login', userController.postLoginUser)
 

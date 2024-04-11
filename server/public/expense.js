@@ -1,5 +1,5 @@
-// let url = "http://localhost:3000"
-let url = "http://54.80.220.110:3000"
+let url = "http://localhost:3000"
+// let url = "http://54.80.220.110:3000"
 let editId;
 let editedExpense
 let token;
