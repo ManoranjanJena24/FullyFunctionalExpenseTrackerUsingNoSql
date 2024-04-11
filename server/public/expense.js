@@ -71,15 +71,15 @@ function renderExpenses(expenses) {//changed line 56 and 57 also
     expensesList.innerHTML = '';
 
     expenses.forEach((expense, index) => {
-        const id = expense.id;
-        console.log(expense.id)
+        const id = expense._id;
+        console.log(expense._id)
         console.log(expense)
         let newExpense = JSON.stringify(expense)
         const li = document.createElement('li');
         li.className = 'list-group-item';
         li.innerHTML = `
       ${expense.amount} - ${expense.description} - ${expense.category} 
-      <button type="button" class="btn btn-danger btn-sm float-right ml-2" onclick="deleteExpense(${id})">Delete</button>
+      <button type="button" class="btn btn-danger btn-sm float-right ml-2" onclick="deleteExpense('${id}')">Delete</button>
     `;
         expensesList.appendChild(li);
     });
@@ -125,7 +125,7 @@ function deleteExpense(id) {
         .then(response => {
             console.log('Expense deleted successfully:', response.data);
             getExpenses(1); // Refresh the expenses list after deletion
-            showLeaderBoard()
+            // showLeaderBoard()
         })
         .catch(error => {
             console.error('Error deleting expense:', error);
@@ -171,7 +171,8 @@ function razoorpayfunction(event) {
             console.log(res);
             const options = {
                 "key": res.data.key_id,
-                "order_id": res.data.order.id,
+                // "order_id": res.data.order.id,
+                "order_id": res.data.order._id,
                 "handler": async function (res) {
                     try {
                         await axios.post(`${url}/purchase/updateTransactionStatus`, {
@@ -229,7 +230,7 @@ function renderLeaderBoard(expenses) {
     expensesList.innerHTML = '';
 
     expenses.forEach((expense, index) => {
-        const id = expense.id;
+        const id = expense._id;
         // console.log(expense.id)
         // console.log(expense)
         let newExpense = JSON.stringify(expense)
