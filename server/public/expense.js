@@ -125,7 +125,7 @@ function deleteExpense(id) {
         .then(response => {
             console.log('Expense deleted successfully:', response.data);
             getExpenses(1); // Refresh the expenses list after deletion
-            // showLeaderBoard()
+            showLeaderBoard()
         })
         .catch(error => {
             console.error('Error deleting expense:', error);
@@ -172,7 +172,7 @@ function razoorpayfunction(event) {
             const options = {
                 "key": res.data.key_id,
                 // "order_id": res.data.order.id,
-                "order_id": res.data.order._id,
+                "order_id": res.data.order.orderId,
                 "handler": async function (res) {
                     try {
                         await axios.post(`${url}/purchase/updateTransactionStatus`, {

@@ -14,11 +14,11 @@ const router = express.Router();
 
 router.get('/premium-membership', userAuthentication.authenticate, purchaseController.purchasePremium);
 
-router.get('/leaderboard', purchaseController.getAllExpenses)
+router.get('/leaderboard', purchaseController.postDownloadLeaderBoard)
 
 router.post('/updateTransactionStatus', userAuthentication.authenticate, purchaseController.updateTransactionStatus);
 
-router.post('/updateTransactionStatus/failed', userAuthentication.authenticate, purchaseController.changeTransactionStatus);
+router.post('/updateTransactionStatus/failed', userAuthentication.authenticate, purchaseController.updateTransactionStatusFailed);
 
 
 
