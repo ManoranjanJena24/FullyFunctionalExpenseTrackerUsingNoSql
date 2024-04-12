@@ -22,17 +22,6 @@ sign_in_btn2.addEventListener("click", () => {
 let url = "http://localhost:3000"
 // let url = "http://54.80.220.110:3000"
 
-// function handleSignUpForm(event) {
-//     event.preventDefault();
-//     const signUpData = {
-//         name: event.target.name.value,
-//         email: document.getElementById('email').value,
-//         password: event.target.password.value,
-//     }
-//     event.target.reset();
-//     postSignUpData(signUpData)
-
-// }
 
 document.getElementById('signUpForm').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -55,27 +44,15 @@ function postSignUpData(data) {
         alert("Signed Up Successfully!!")
         window.location.href = 'index.html';
 
-    }).catch((err) => {
-        console.log(err)
+    }).catch((error) => {
+        console.log(error)
         const errormsg = document.getElementById('errormsg')
-        errormsg.innerHTML = err.message
+        errormsg.innerHTML = error.response.data.error
+        alert(error.response.data.error)
 
     })
 }
 
-// function handleSignInForm(event) {
-//     event.preventDefault();
-//     const errormsg = document.getElementById('errormsg')
-//     errormsg.innerHTML = ''
-//     const loginData = {
-//         email: event.target.loginemail.value,
-//         password: event.target.loginPassword.value
-//     }
-//     event.target.reset();
-//     console.log(loginData)
-//     userLogin(loginData);
-
-// }
 
 document.getElementById('signInForm').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -104,10 +81,10 @@ function userLogin(data) {
         window.location.href = 'expense.html';
 
     }).catch((error) => {
-        console.log(error.response.data.message)
+        console.log(error)
         const errormsg = document.getElementById('errormsg')
-        errormsg.innerHTML = error.response.data.message
-        alert(error)
+        errormsg.innerHTML = error.response.data.error
+        alert(error.response.data.error)
     })
 }
 

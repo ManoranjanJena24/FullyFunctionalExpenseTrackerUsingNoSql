@@ -51,7 +51,7 @@ function getExpenses(page) {
     axios.get(`${url}/expense/get-expenses?page=${page}&limit=${expensesPerPage}`, {
         headers: {
             "Authorization":
-                token
+                token,
         }
     })
         .then((response) => {
