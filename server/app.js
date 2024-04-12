@@ -3,7 +3,7 @@ const express = require('express');
 const morgan = require('morgan')
 require('dotenv').config();
 const bodyParser = require('body-parser');
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 const sequelize = require('./utils/database')
 var Sib = require('sib-api-v3-sdk');
 // const sib = new Sib()
